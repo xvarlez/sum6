@@ -26,10 +26,19 @@ android {
 }
 
 def supportLibraryVersion = '25.3.1'
+def lifecycleVersion = '1.0.0-alpha3'
+def lombokVersion = '1.16.16'
 
 dependencies {
     compile "com.android.support:appcompat-v7:$supportLibraryVersion"
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    compile "android.arch.lifecycle:runtime:$lifecycleVersion"
+    compile "android.arch.lifecycle:extensions:$lifecycleVersion"
+    annotationProcessor "android.arch.lifecycle:compiler:$lifecycleVersion"
+
+    provided "org.projectlombok:lombok:$lombokVersion"
+    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
 
     testCompile 'junit:junit:4.12'
     testCompile "com.google.truth:truth:0.33"
