@@ -12,6 +12,7 @@ import io.reactivex.Observable;
 import io.reactivex.observers.TestObserver;
 import io.reactivex.plugins.RxJavaPlugins;
 import io.reactivex.schedulers.TestScheduler;
+import io.reactivex.subjects.BehaviorSubject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -95,6 +96,39 @@ public class SumViewModelTest {
         observer.assertNoErrors();
         observer.assertNotComplete();
         observer.assertValue(0);
+    }
+
+    @Test
+    public void isResultAnimated_isInitializedTo_false() {
+        // Given
+        BehaviorSubject<Boolean> isResultAnimatedSubject = viewModel.getIsResultAnimatedSubject();
+        TestObserver<Boolean> observer = new TestObserver<>();
+
+        // When
+        isResultAnimatedSubject.subscribe(observer);
+
+        // Then
+        observer.assertNoErrors();
+        observer.assertNotComplete();
+        observer.assertValueCount(1);
+        observer.assertValue(false);
+    }
+
+    @Test
+    public void resultTouched_emits_invertedBoolean() {
+        // Given
+        BehaviorSubject<Boolean> isResultAnimatedSubject = viewModel.getIsResultAnimatedSubject();
+        TestObserver<Boolean> observer = new TestObserver<>();
+
+        // When
+        isResultAnimatedSubject.subscribe(observer);
+        viewModel.resultTouched(null);
+
+        // Then
+        observer.assertNoErrors();
+        observer.assertNotComplete();
+        observer.assertValueCount(2);
+        observer.assertValues(false, true);
     }
 
 }

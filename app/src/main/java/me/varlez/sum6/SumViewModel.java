@@ -4,14 +4,14 @@ import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableField;
 import android.support.annotation.VisibleForTesting;
 import android.util.Log;
+import android.view.View;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
+import io.reactivex.subjects.BehaviorSubject;
 import lombok.Data;
 import me.varlez.sum6.util.RxUtils;
 
@@ -27,6 +27,10 @@ public class SumViewModel extends ViewModel {
     private final ObservableField<String> numberSix = new ObservableField<>("1");
 
     private final ObservableField<String> result = new ObservableField<>("");
+
+    private Boolean isResultAnimated = false;
+    private final BehaviorSubject<Boolean> isResultAnimatedSubject = BehaviorSubject.createDefault(isResultAnimated);
+
 
     @VisibleForTesting
     Observable<String> numbersObservable;
@@ -69,6 +73,12 @@ public class SumViewModel extends ViewModel {
                         return 0;
                     }
                 });
+    }
+
+    public void resultTouched(View view) {
+        Log.d(TAG, "resultTouched: ");
+        isResultAnimated = !isResultAnimated;
+        isResultAnimatedSubject.onNext(isResultAnimated);
     }
 
 }
