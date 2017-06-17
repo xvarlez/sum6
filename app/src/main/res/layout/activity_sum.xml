@@ -45,6 +45,67 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="16dp" />
 
+
+        <EditText
+            android:id="@+id/edittext3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="3"
+            android:text="@={viewModel.numberThree}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edittext1"
+            app:layout_constraintVertical_bias="0.0"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <EditText
+            android:id="@+id/edittext4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="3"
+            android:text="@={viewModel.numberFour}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edittext2"
+            app:layout_constraintVertical_bias="0.0"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/edittext3"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp" />
+
+        <EditText
+            android:id="@+id/edittext5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="3"
+            android:text="@={viewModel.numberFive}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edittext3"
+            app:layout_constraintVertical_bias="0.0"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <EditText
+            android:id="@+id/edittext6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="3"
+            android:text="@={viewModel.numberSix}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edittext4"
+            app:layout_constraintVertical_bias="0.0"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/edittext5"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp" />
+
         <TextView
             android:id="@+id/textview_result"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
@@ -52,7 +113,7 @@
             android:layout_height="wrap_content"
             android:text="@{viewModel.result}"
             android:layout_marginTop="32dp"
-            app:layout_constraintTop_toBottomOf="@+id/edittext1"
+            app:layout_constraintTop_toBottomOf="@+id/edittext5"
             android:layout_marginRight="8dp"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginLeft="8dp"

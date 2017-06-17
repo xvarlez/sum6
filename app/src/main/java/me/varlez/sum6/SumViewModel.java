@@ -5,6 +5,8 @@ import android.databinding.ObservableField;
 import android.support.annotation.VisibleForTesting;
 import android.util.Log;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
@@ -19,6 +21,11 @@ public class SumViewModel extends ViewModel {
 
     private final ObservableField<String> numberOne = new ObservableField<>("2");
     private final ObservableField<String> numberTwo = new ObservableField<>("1");
+    private final ObservableField<String> numberThree = new ObservableField<>("2");
+    private final ObservableField<String> numberFour = new ObservableField<>("1");
+    private final ObservableField<String> numberFive = new ObservableField<>("2");
+    private final ObservableField<String> numberSix = new ObservableField<>("1");
+
     private final ObservableField<String> result = new ObservableField<>("");
 
     @VisibleForTesting
@@ -29,10 +36,16 @@ public class SumViewModel extends ViewModel {
     public SumViewModel() {
         this.sum = new Sum();
 
-        numbersObservable = Observable.combineLatest(
+        List<Observable<Integer>> list = Arrays.asList(
                 toIntObservable(numberOne),
                 toIntObservable(numberTwo),
-                (i, i2) -> String.valueOf(sum.compute(i, i2)))
+                toIntObservable(numberThree),
+                toIntObservable(numberFour),
+                toIntObservable(numberFive),
+                toIntObservable(numberSix));
+
+        numbersObservable = Observable.combineLatest(list,
+                values -> String.valueOf(sum.compute(values)))
                 .debounce(400, TimeUnit.MILLISECONDS);
 
         subscribe();

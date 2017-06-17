@@ -10,7 +10,8 @@ public class SumTest {
     @Test
     public void compute() throws Exception {
         Sum sum = new Sum();
-        assertThat(sum.compute(1, 2)).isEqualTo(3);
+        Object[] values = {1, 2};
+        assertThat(sum.compute(values)).isEqualTo(3);
     }
 
 }

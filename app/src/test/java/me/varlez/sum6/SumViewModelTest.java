@@ -9,10 +9,8 @@ import org.junit.Test;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
-import io.reactivex.android.plugins.RxAndroidPlugins;
 import io.reactivex.observers.TestObserver;
 import io.reactivex.plugins.RxJavaPlugins;
-import io.reactivex.schedulers.Schedulers;
 import io.reactivex.schedulers.TestScheduler;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -42,12 +40,16 @@ public class SumViewModelTest {
         // Given
         viewModel.getNumberOne().set("6");
         viewModel.getNumberTwo().set("4");
+        viewModel.getNumberThree().set("5");
+        viewModel.getNumberFour().set("5");
+        viewModel.getNumberFive().set("7");
+        viewModel.getNumberSix().set("3");
 
         // When
         scheduler.advanceTimeTo(500, TimeUnit.MILLISECONDS);
 
         // Then
-        assertThat(viewModel.getResult().get()).isEqualTo("10");
+        assertThat(viewModel.getResult().get()).isEqualTo("30");
     }
 
     @Test
