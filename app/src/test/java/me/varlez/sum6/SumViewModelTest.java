@@ -101,7 +101,7 @@ public class SumViewModelTest {
     @Test
     public void isResultAnimated_isInitializedTo_false() {
         // Given
-        BehaviorSubject<Boolean> isResultAnimatedSubject = viewModel.getIsResultAnimatedSubject();
+        BehaviorSubject<Boolean> isResultAnimatedSubject = viewModel.getResultAnimationSubject();
         TestObserver<Boolean> observer = new TestObserver<>();
 
         // When
@@ -117,7 +117,7 @@ public class SumViewModelTest {
     @Test
     public void resultTouched_emits_invertedBoolean() {
         // Given
-        BehaviorSubject<Boolean> isResultAnimatedSubject = viewModel.getIsResultAnimatedSubject();
+        BehaviorSubject<Boolean> isResultAnimatedSubject = viewModel.getResultAnimationSubject();
         TestObserver<Boolean> observer = new TestObserver<>();
 
         // When

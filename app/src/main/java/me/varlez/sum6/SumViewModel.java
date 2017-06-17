@@ -29,7 +29,7 @@ public class SumViewModel extends ViewModel {
     private final ObservableField<String> result = new ObservableField<>("");
 
     private Boolean isResultAnimated = false;
-    private final BehaviorSubject<Boolean> isResultAnimatedSubject = BehaviorSubject.createDefault(isResultAnimated);
+    private final BehaviorSubject<Boolean> resultAnimationSubject = BehaviorSubject.createDefault(isResultAnimated);
 
 
     @VisibleForTesting
@@ -76,9 +76,8 @@ public class SumViewModel extends ViewModel {
     }
 
     public void resultTouched(View view) {
-        Log.d(TAG, "resultTouched: ");
         isResultAnimated = !isResultAnimated;
-        isResultAnimatedSubject.onNext(isResultAnimated);
+        resultAnimationSubject.onNext(isResultAnimated);
     }
 
 }
