@@ -9,12 +9,14 @@ import me.varlez.sum6.databinding.ActivitySumBinding;
 
 public class SumActivity extends AppCompatActivity {
 
+    private SumViewModel viewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         ActivitySumBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_sum);
-        SumViewModel viewModel = ViewModelProviders.of(this).get(SumViewModel.class);
+        viewModel = ViewModelProviders.of(this).get(SumViewModel.class);
 
         binding.setViewModel(viewModel);
     }
